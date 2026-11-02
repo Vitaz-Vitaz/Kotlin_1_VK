@@ -7,7 +7,7 @@
     android:padding="@dimen/sq_space">
 
     <TextView
-        android:id="@+id/square_number"
+        android:id="@+id/sq_id"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
