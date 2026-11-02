@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="chet_sq">#D0170B</color>
+    <color name="ne_chet_sq">#0045E2</color>
 </resources>

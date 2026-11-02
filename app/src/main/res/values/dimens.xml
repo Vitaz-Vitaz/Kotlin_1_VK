@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="sq_space">4dp</dimen>
+    <dimen name="recycle_space">4dp</dimen>
+    <dimen name="add_button_space">8dp</dimen>
+    <dimen name="text_size">24sp</dimen>
+</resources>
