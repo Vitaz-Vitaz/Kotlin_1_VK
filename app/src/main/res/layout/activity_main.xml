@@ -21,6 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/add_button_space"
+        android:backgroundTint="@color/b_color"
+        app:cornerRadius="@dimen/button_radius"
         android:text="@string/add_sq" />
 
 </LinearLayout>

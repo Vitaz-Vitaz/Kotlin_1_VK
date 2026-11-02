@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">DZ1_VK1_Kotlin</string>
-    <string name="add_sq">Добавить</string>
+    <string name="add_sq">Добавить новый квадрат</string>
 </resources>

@@ -4,4 +4,5 @@
     <dimen name="recycle_space">4dp</dimen>
     <dimen name="add_button_space">8dp</dimen>
     <dimen name="text_size">24sp</dimen>
+    <dimen name="button_radius">20sp</dimen>
 </resources>
