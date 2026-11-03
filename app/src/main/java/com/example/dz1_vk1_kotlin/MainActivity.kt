@@ -23,8 +23,10 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val count = savedInstanceState?.getInt("squares_count") ?: 0
-        adapter = SqAdapter(count)
+        val text_views = savedInstanceState?.getIntegerArrayList("views") ?: arrayListOf()
+        val deleted = savedInstanceState?.getIntegerArrayList("deleted") ?: arrayListOf()
+        val nextSq = savedInstanceState?.getInt("next_sq") ?: 0
+        adapter = SqAdapter(text_views, deleted, nextSq)
 
         val list = findViewById<RecyclerView>(R.id.squares_list)
         list.layoutManager = GridLayoutManager(this, resources.getInteger(R.integer.columns))
@@ -38,6 +40,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putInt("squares_count", adapter.itemCount)
+        outState.putIntegerArrayList("views", adapter.text_views)
+        outState.putIntegerArrayList("deleted", adapter.deleted_views)
+        outState.putInt("next_sq", adapter.nextSq)
     }
 }

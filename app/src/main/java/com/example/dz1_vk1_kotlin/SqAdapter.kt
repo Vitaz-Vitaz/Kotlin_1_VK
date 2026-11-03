@@ -7,7 +7,10 @@
     import androidx.core.content.ContextCompat
     import androidx.recyclerview.widget.RecyclerView
 
-    class SqAdapter(private var count: Int) :
+    class SqAdapter(
+        val text_views: ArrayList<Int>,
+        val deleted_views: ArrayList<Int>,
+        var nextSq: Int) :
         RecyclerView.Adapter<SqAdapter.SqViewHolder>() {
         override fun onCreateViewHolder(
             parent: ViewGroup,
@@ -15,22 +18,30 @@
         ): SqViewHolder {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.square, parent, false)
-            return SqViewHolder(view)
+            val holder = SqViewHolder(view)
+            holder.itemView.setOnClickListener {
+                val pos = holder.bindingAdapterPosition
+                if (pos != RecyclerView.NO_POSITION) {
+                    removeSq(pos)
+                }
+            }
+            return holder
         }
 
         override fun onBindViewHolder(
             holder: SqViewHolder,
             position: Int
         ) {
-            holder.number.text = position.toString()
-            val colorRes = if (position % 2 == 0) R.color.chet_sq else R.color.ne_chet_sq
+            val num = text_views[position]
+            holder.number.text = num.toString()
+            val colorRes = if (num % 2 == 0) R.color.chet_sq else R.color.ne_chet_sq
             holder.number.setBackgroundColor(
                 ContextCompat.getColor(holder.itemView.context, colorRes)
             )
         }
 
         override fun getItemCount(): Int {
-            return count
+            return text_views.size
         }
 
         class SqViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -38,7 +49,19 @@
         }
 
         fun addSq() {
-            count++
-            notifyItemInserted(count - 1)
+            if (deleted_views.isNotEmpty()){
+                text_views.add(deleted_views.removeAt(deleted_views.lastIndex))
+            }
+            else {
+                text_views.add(nextSq)
+                nextSq++
+            }
+            notifyItemInserted(text_views.lastIndex)
+
+        }
+
+        private fun removeSq(position: Int) {
+            deleted_views.add(text_views.removeAt(position))
+            notifyItemRemoved(position)
         }
     }
